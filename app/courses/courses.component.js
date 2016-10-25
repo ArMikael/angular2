@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses.service', '../directives/auto-grow.directive'], function(exports_1, context_1) {
+System.register(['angular2/core', './courses.service', '../directives/auto-grow.directive', '../components/like.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './courses.service', '../directives/auto-grow.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_service_1, auto_grow_directive_1;
+    var core_1, courses_service_1, auto_grow_directive_1, like_component_1;
     var CoursesComponent;
     return {
         setters:[
@@ -22,10 +22,17 @@ System.register(['angular2/core', './courses.service', '../directives/auto-grow.
             },
             function (auto_grow_directive_1_1) {
                 auto_grow_directive_1 = auto_grow_directive_1_1;
+            },
+            function (like_component_1_1) {
+                like_component_1 = like_component_1_1;
             }],
         execute: function() {
             CoursesComponent = (function () {
                 function CoursesComponent(courseService) {
+                    this.courseStat = {
+                        likesNum: 12,
+                        isLiked: false
+                    };
                     this.isActive = true;
                     this.link = 'http://www.geen.io';
                     this.courses = courseService.getCourses();
@@ -33,9 +40,9 @@ System.register(['angular2/core', './courses.service', '../directives/auto-grow.
                 CoursesComponent = __decorate([
                     core_1.Component({
                         selector: 'courses',
-                        template: "\n              <h2>Courses</h2> \n              <input type=\"text\" class=\"animated\" autoGrow />\n              <button class=\"btn-default btn-primary\" [class.active]=\"isActive\">Go</button>\n              <ul class=\"courses\">\n                <li *ngFor=\"#course of courses\">\n                    {{ course }}\n                </li>\n              </ul>\n\n              <a [href]=\"link\"> \n                <small>find more courses</small>\n              </a>\n              ",
+                        template: "\n              <h2>Courses</h2> \n              <input type=\"text\" class=\"animated\" autoGrow />\n              <button class=\"btn-default btn-primary\" [class.active]=\"isActive\">Go</button>\n              <ul class=\"courses\">\n                <li *ngFor=\"#course of courses\">\n                    <like [likesNum]=\"courseStat.likesNum\" [isLiked]=\"courseStat.isLiked\"></like> \n                    {{ course }}\n                </li>\n              </ul>\n\n              <a [href]=\"link\"> \n                <small>find more courses</small>\n              </a>\n              ",
                         providers: [courses_service_1.CoursesService],
-                        directives: [auto_grow_directive_1.AutoGrowDirective]
+                        directives: [auto_grow_directive_1.AutoGrowDirective, like_component_1.LikeComponent]
                     }), 
                     __metadata('design:paramtypes', [courses_service_1.CoursesService])
                 ], CoursesComponent);

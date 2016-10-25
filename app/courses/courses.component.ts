@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {CoursesService} from './courses.service';
 import {AutoGrowDirective} from '../directives/auto-grow.directive';
+import {LikeComponent} from '../components/like.component';
 
 @Component({
     selector: 'courses',
@@ -10,6 +11,7 @@ import {AutoGrowDirective} from '../directives/auto-grow.directive';
               <button class="btn-default btn-primary" [class.active]="isActive">Go</button>
               <ul class="courses">
                 <li *ngFor="#course of courses">
+                    <like [likesNum]="courseStat.likesNum" [isLiked]="courseStat.isLiked"></like> 
                     {{ course }}
                 </li>
               </ul>
@@ -19,7 +21,7 @@ import {AutoGrowDirective} from '../directives/auto-grow.directive';
               </a>
               `, // Property binding it is one way binding from component to the DOM
     providers: [CoursesService],
-    directives: [AutoGrowDirective]
+    directives: [AutoGrowDirective, LikeComponent]
 })
 export class CoursesComponent {
     courses: string[];
@@ -27,6 +29,11 @@ export class CoursesComponent {
     constructor(courseService:CoursesService) {
         this.courses = courseService.getCourses();
     }
+
+    courseStat = {
+        likesNum: 12,
+        isLiked: false
+    };
 
     isActive = true;
     link = 'http://www.geen.io';
