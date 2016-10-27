@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses/courses.component', './authors/authors.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './courses/courses.component', './authors/authors.component', './components/voter.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, authors_component_1;
+    var core_1, courses_component_1, authors_component_1, voter_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
             },
             function (authors_component_1_1) {
                 authors_component_1 = authors_component_1_1;
+            },
+            function (voter_component_1_1) {
+                voter_component_1 = voter_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -34,8 +37,8 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<h1>Angular 2 App</h1>\n               <courses></courses> \n               <authors></authors>\n               <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n\n               <div>\n                   <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                   <input type=\"text\" [(ngModel)]='courseTitle' />\n                   <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n               </div>\n               ",
-                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent]
+                        template: "<h1>Angular 2 App</h1>\n               <courses></courses> \n               <authors></authors>\n               <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n\n               <div>\n                   <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                   <input type=\"text\" [(ngModel)]='courseTitle' />\n                   <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n               </div>\n               <voter></voter>\n               <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus\n                enim maxime perspiciatis quia quisquam quo similique vel.\n               </article>\n               ",
+                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, voter_component_1.VoteComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
