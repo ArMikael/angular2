@@ -20,15 +20,31 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             VoteComponent = (function () {
                 function VoteComponent() {
+                    this.isVoted = 0;
                 }
+                VoteComponent.prototype.voteUp = function () {
+                    if (this.isVoted != 1) {
+                        this.totalVotes++;
+                    }
+                };
+                ;
+                VoteComponent.prototype.voteDown = function () {
+                    if (this.isVoted != -1) {
+                        this.totalVotes--;
+                    }
+                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
                 ], VoteComponent.prototype, "totalVotes", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], VoteComponent.prototype, "isVoted", void 0);
                 VoteComponent = __decorate([
                     core_1.Component({
                         selector: 'voter',
-                        template: "\n                <i class=\"glyphicon-menu-up\">\n                </i>\n                \n                    {{ totalVotes }}\n                    \n                <i class=\"glyphicon-menu-down\">\n                </i>       \n              "
+                        template: "\n                <i class=\"glyphicon-menu-up\" (click)=\"voteUp()\">\n                </i>\n                \n                    {{ totalVotes }}\n                    \n                <i class=\"glyphicon-menu-down\" (click)=\"voteDown\">\n                </i>       \n              "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], VoteComponent);
