@@ -1,0 +1,9 @@
+.main {
+    padding: 40px;
+    background-color: beige;
+}
+
+.animated {
+    transition: all 0.4s;
+}
+
