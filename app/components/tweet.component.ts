@@ -16,7 +16,7 @@ import {LikeComponent} from './like.component';
                     <span class="tweeter-user">{{ tweet.user }}</span>
                 </h4>
                 <p class="tweet">{{ tweet.text }}</p>
-                <like></like>
+                <like [likesNum]="tweet.likesNum" [isLiked]="tweet.isLiked"></like>
             </div>
         </div>
     `,
@@ -30,9 +30,11 @@ import {LikeComponent} from './like.component';
 export class TweetComponent {
     @Input() totalTweets = 0;
 
-    tweet: {
+    tweet = {
         title: 'AngularJS News',
         user: '@angular_news',
-        text: 'Angular 2 is released! Give me two!'
+        text: 'Angular 2 is released! Give me two!',
+        likesNum: 5,
+        isLiked: false
     }
 };

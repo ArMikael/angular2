@@ -24,6 +24,13 @@ System.register(['angular2/core', './like.component'], function(exports_1, conte
             TweetComponent = (function () {
                 function TweetComponent() {
                     this.totalTweets = 0;
+                    this.tweet = {
+                        title: 'AngularJS News',
+                        user: '@angular_news',
+                        text: 'Angular 2 is released! Give me two!',
+                        likesNum: 5,
+                        isLiked: false
+                    };
                 }
                 __decorate([
                     core_1.Input(), 
@@ -32,7 +39,7 @@ System.register(['angular2/core', './like.component'], function(exports_1, conte
                 TweetComponent = __decorate([
                     core_1.Component({
                         selector: 'tweet',
-                        template: "\n        <div class=\"media\">\n            <div class=\"media-left\">\n                <a href=\"#\">\n                    <img class=\"media-object\" src=\"http://lorempixel.com/100/100/people\" alt=\"photo\">\n                </a>\n            </div>\n            <div class=\"media-body\">\n                <h4 class=\"media-heading\">\n                    {{ tweet.title }}\n                    <span class=\"tweeter-user\">{{ tweet.user }}</span>\n                </h4>\n                <p class=\"tweet\">{{ tweet.text }}</p>\n                <like></like>\n            </div>\n        </div>\n    ",
+                        template: "\n        <div class=\"media\">\n            <div class=\"media-left\">\n                <a href=\"#\">\n                    <img class=\"media-object\" src=\"http://lorempixel.com/100/100/people\" alt=\"photo\">\n                </a>\n            </div>\n            <div class=\"media-body\">\n                <h4 class=\"media-heading\">\n                    {{ tweet.title }}\n                    <span class=\"tweeter-user\">{{ tweet.user }}</span>\n                </h4>\n                <p class=\"tweet\">{{ tweet.text }}</p>\n                <like [likesNum]=\"tweet.likesNum\" [isLiked]=\"tweet.isLiked\"></like>\n            </div>\n        </div>\n    ",
                         styles: ["\n        .tweeter-user {\n            color: lightgray;\n        }\n    "],
                         directives: [like_component_1.LikeComponent]
                     }), 
