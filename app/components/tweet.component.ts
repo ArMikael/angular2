@@ -25,7 +25,7 @@ import {LikeComponent} from './like.component';
             color: lightgray;
         }
     `],
-    directives: ['LikeComponent']
+    directives: [LikeComponent]
 })
 export class TweetComponent {
     @Input() totalTweets = 0;
