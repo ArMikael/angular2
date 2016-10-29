@@ -20,18 +20,24 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             VoteComponent = (function () {
                 function VoteComponent() {
-                    this.isVoted = 0;
+                    this.totalVotes = 0;
+                    this.myVote = 0;
+                    this.vote = new core_1.EventEmitter();
                 }
                 VoteComponent.prototype.voteUp = function () {
-                    if (this.isVoted != 1) {
-                        this.totalVotes++;
+                    if (this.myVote == 1) {
+                        return;
                     }
+                    this.myVote++;
+                    this.vote.emit({ myVote: this.myVote });
                 };
                 ;
                 VoteComponent.prototype.voteDown = function () {
-                    if (this.isVoted != -1) {
-                        this.totalVotes--;
+                    if (this.myVote == -1) {
+                        return;
                     }
+                    this.myVote--;
+                    this.vote.emit({ myVote: this.myVote });
                 };
                 __decorate([
                     core_1.Input(), 
@@ -40,11 +46,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
-                ], VoteComponent.prototype, "isVoted", void 0);
+                ], VoteComponent.prototype, "myVote", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', Object)
+                ], VoteComponent.prototype, "vote", void 0);
                 VoteComponent = __decorate([
                     core_1.Component({
                         selector: 'voter',
-                        template: "\n                <i class=\"glyphicon-menu-up\" (click)=\"voteUp()\">\n                </i>\n                \n                    {{ totalVotes }}\n                    \n                <i class=\"glyphicon-menu-down\" (click)=\"voteDown\">\n                </i>       \n              "
+                        template: "\n                <div class=\"voter-block\">\n                    <i class=\"glyphicon glyphicon-menu-up\" \n                       [class.highlighted]=\"myVote == 1\"\n                        (click)=\"voteUp()\">\n                    </i>\n                    \n                        <span class=\"total-votes\">{{ totalVotes + myVote }}</span>\n                        \n                    <i class=\"glyphicon glyphicon-menu-down\"\n                        [class.highlighted]=\"myVote == -1\"\n                        (click)=\"voteDown()\">\n                    </i>       \n                </div>\n              ",
+                        styles: ["\n        .voter-block {\n            width: 20px;\n            display: inline-block;\n        }\n        \n        .glyphicon {\n            display: inline-block;\n            cursor: pointer;\n        }\n        \n        .glyphicon,\n        .total-votes {\n            font-size: 18px;\n            text-align: center;\n            -webkit-user-select: none;\n            -moz-user-select: none;\n            -ms-user-select: none;\n            user-select: none;\n        }\n        \n        .total-votes {\n            display: inline-block;\n            width: 100%;\n        }\n        \n        .highlighted {\n            color: gold;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], VoteComponent);
