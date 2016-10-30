@@ -1,5 +1,5 @@
 import {Component, Input, Output} from 'angular2/core';
-import {LikeComponent} from './like.component';
+import {LikeComponent} from '../components/like.component';
 import {TweetsService} from './tweets.service';
 
 @Component({

@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {CoursesComponent} from './courses/courses.component';
 import {AuthorsComponent} from './authors/authors.component';
 import {VoteComponent} from './components/voter.component';
-import {TweetComponent} from "./components/tweet.component";
+import {TweetComponent} from "./tweets/tweet.component";
 
 @Component({
     selector: 'my-app',
@@ -28,8 +28,6 @@ import {TweetComponent} from "./components/tweet.component";
                         <p class="article-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus
                         enim maxime perspiciatis quia quisquam quo similique vel.</p>
                    </article>
-                   
-                   <tweet></tweet>
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
     directives: [CoursesComponent, AuthorsComponent, VoteComponent, TweetComponent]
