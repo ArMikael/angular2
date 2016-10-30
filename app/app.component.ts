@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {CoursesComponent} from './courses/courses.component';
 import {AuthorsComponent} from './authors/authors.component';
 import {VoteComponent} from './components/voter.component';
+import {TweetComponent} from "./components/tweet.component";
 
 @Component({
     selector: 'my-app',
@@ -18,18 +19,34 @@ import {VoteComponent} from './components/voter.component';
                    </div>
                    
                    <article>
-                    <voter></voter>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus
-                    enim maxime perspiciatis quia quisquam quo similique vel.</p>
+                        <voter 
+                            [totalVotes]="post.totalVotes"
+                            [myVote]="post.myVote"
+                            (vote)="onVote($event)"
+                        >
+                        </voter>
+                        <p class="article-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus
+                        enim maxime perspiciatis quia quisquam quo similique vel.</p>
                    </article>
+                   
+                   <tweet></tweet>
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
-    directives: [CoursesComponent, AuthorsComponent, VoteComponent]
+    directives: [CoursesComponent, AuthorsComponent, VoteComponent, TweetComponent]
 })
-export class AppComponent { 
+export class AppComponent {
+    post = {
+        totalVotes: 10,
+        myVote: 0
+    };
+
     onClick($event) {
         // $event.stopPropagation(); - Will disable to the event to go up by the parrent elements
         console.log('Submit Clicked', $event)
-    }
+    };
+
+    onVote($event) {
+        console.log($event);
+    };
 
 }  
