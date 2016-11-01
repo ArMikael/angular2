@@ -4,8 +4,10 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
     selector: 'favorite',
     template: `<i
                     class="glyphicon"
-                    [class.glyphicon-star] = isFavorited
-                    [class.glyphicon-star-empty] = !isFavorited 
+                    [ngClass]="{
+                        'glyphicon-star': isFavorited,
+                        'glyphicon-star-empty': !isFavorited
+                    }"
                     (click)="onClick()">
                </i>`
 })
