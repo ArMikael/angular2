@@ -4,6 +4,7 @@ import {AuthorsComponent} from './authors/authors.component';
 import {VoteComponent} from './components/voter.component';
 import {TweetComponent} from './tweets/tweet.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
+import {ZippyComponent} from './components/zippy.component';
 
 @Component({
     selector: 'my-app',
@@ -30,11 +31,14 @@ import {ContactFormComponent} from './contact-form/contact-form.component';
                         enim maxime perspiciatis quia quisquam quo similique vel.</p>
                    </article>
                    
+                   <zippy></zippy>
+                   
                    <contact-form></contact-form>
                    
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
-    directives: [CoursesComponent, AuthorsComponent, VoteComponent, TweetComponent, ContactFormComponent]
+    directives: [CoursesComponent, AuthorsComponent, VoteComponent,
+                TweetComponent, ContactFormComponent, ZippyComponent]
 })
 export class AppComponent {
     post = {

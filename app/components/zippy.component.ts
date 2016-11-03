@@ -2,10 +2,23 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: 'zippy',
+    styles: [`
+        .panel-heading {
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    `],
     template: `
         <div class="panel panel-default">
             <div class="panel-heading" (click)="onClick()">
-                <i class="glyphicon" ngClass="statusOpened = true ? glyphicon-chevron-up : glyphicon-chevron-down"></i>
+                <i class="glyphicon" [ngClass]="{
+                    'glyphicon-chevron-up' : statusOpened,
+                    'glyphicon-chevron-down' : !statusOpened
+                    }">         
+                </i>
             </div>
             
             <div class="panel-body" *ngIf="statusOpened">
