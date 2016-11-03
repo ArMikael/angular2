@@ -14,3 +14,7 @@
 .contact-form {
 	margin-top: 60px;
 }
+
+.ng-touched.ng-invalid {
+	border: 1px solid red;
+}

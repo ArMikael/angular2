@@ -21,6 +21,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             ContactFormComponent = (function () {
                 function ContactFormComponent() {
                 }
+                ContactFormComponent.prototype.inputChange = function (input) {
+                    console.log(input);
+                };
+                ;
                 ContactFormComponent = __decorate([
                     core_1.Component({
                         selector: 'contact-form',

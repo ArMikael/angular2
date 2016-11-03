@@ -6,4 +6,7 @@ import {Component} from 'angular2/core';
 })
 export class ContactFormComponent {
 
+    inputChange(input) {
+        console.log(input);
+    };
 }
