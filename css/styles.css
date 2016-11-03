@@ -10,3 +10,7 @@
 .article-text {
     display: inline-block;
 }
+
+.contact-form {
+    margin-top: 60px;
+}
