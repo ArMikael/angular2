@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses/courses.component', './authors/authors.component', './components/voter.component', './tweets/tweet.component', './contact-form/contact-form.component', './components/zippy.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './courses/courses.component', './authors/authors.component', './components/voter.component', './tweets/tweet.component', './contact-form/contact-form.component', './components/zippy.component', './components/zippy.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, authors_component_1, voter_component_1, tweet_component_1, contact_form_component_1, zippy_component_1;
+    var core_1, courses_component_1, authors_component_1, voter_component_1, tweet_component_1, contact_form_component_1, zippy_component_1, zippy_service_1;
     var AppComponent;
     return {
         setters:[
@@ -34,28 +34,18 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
             },
             function (zippy_component_1_1) {
                 zippy_component_1 = zippy_component_1_1;
+            },
+            function (zippy_service_1_1) {
+                zippy_service_1 = zippy_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(zippyService) {
                     this.post = {
                         totalVotes: 10,
                         myVote: 0
                     };
-                    this.zippyList = [
-                        {
-                            title: 'AngularJS News',
-                            message: 'we have a new great album for you. Listen to it and take fun'
-                        },
-                        {
-                            title: 'New Album - Tesera Nova',
-                            message: '@Red_Hot_Chili_Peppers tadadada'
-                        },
-                        {
-                            title: 'React News',
-                            message: 'Angular 2 is released! Give me two!'
-                        }
-                    ];
+                    this.zippyList = zippyService.getZippies();
                 }
                 AppComponent.prototype.onClick = function ($event) {
                     // $event.stopPropagation(); - Will disable to the event to go up by the parrent elements
@@ -71,9 +61,10 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                         selector: 'my-app',
                         template: "<main class=\"main\">\n                   <h1>Angular 2 App</h1>\n                   <courses></courses> \n                   <authors></authors>\n                   <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n    \n                   <div>\n                       <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                       <input type=\"text\" [(ngModel)]='courseTitle' />\n                       <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n                   </div>\n                   \n                   <article>\n                        <voter \n                            [totalVotes]=\"post.totalVotes\"\n                            [myVote]=\"post.myVote\"\n                            (vote)=\"onVote($event)\"\n                        >\n                        </voter>\n                        <p class=\"article-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus\n                        enim maxime perspiciatis quia quisquam quo similique vel.</p>\n                   </article>\n                   \n                   <zippy *ngFor=\"#zip of zippyList\">\n                        <h2 class=\"zippy-header\">{{ zip.title }}</h2>\n                        <p class=\"zippy-body\">{{ zip.message }}</p>\n                   </zippy>\n                   \n                   <contact-form></contact-form>\n                   \n              </main> \n              ",
                         directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, voter_component_1.VoteComponent,
-                            tweet_component_1.TweetComponent, contact_form_component_1.ContactFormComponent, zippy_component_1.ZippyComponent]
+                            tweet_component_1.TweetComponent, contact_form_component_1.ContactFormComponent, zippy_component_1.ZippyComponent],
+                        providers: [zippy_service_1.ZippyService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [zippy_service_1.ZippyService])
                 ], AppComponent);
                 return AppComponent;
             }());

@@ -5,6 +5,7 @@ import {VoteComponent} from './components/voter.component';
 import {TweetComponent} from './tweets/tweet.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
 import {ZippyComponent} from './components/zippy.component';
+import {ZippyService} from './components/zippy.service';
 
 @Component({
     selector: 'my-app',
@@ -41,7 +42,8 @@ import {ZippyComponent} from './components/zippy.component';
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
     directives: [CoursesComponent, AuthorsComponent, VoteComponent,
-                TweetComponent, ContactFormComponent, ZippyComponent]
+                TweetComponent, ContactFormComponent, ZippyComponent],
+    providers: [ZippyService]
 })
 export class AppComponent {
     post = {
@@ -49,20 +51,9 @@ export class AppComponent {
         myVote: 0
     };
 
-    zippyList = [
-        {
-            title: 'AngularJS News',
-            message: 'we have a new great album for you. Listen to it and take fun'
-        },
-        {
-            title: 'New Album - Tesera Nova',
-            message: '@Red_Hot_Chili_Peppers tadadada'
-        },
-        {
-            title: 'React News',
-            message: 'Angular 2 is released! Give me two!'
-        }
-    ];
+    constructor (zippyService: ZippyService) {
+        this.zippyList = zippyService.getZippies();
+    }
 
     onClick($event) {
         // $event.stopPropagation(); - Will disable to the event to go up by the parrent elements
