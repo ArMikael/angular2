@@ -51,6 +51,8 @@ export class AppComponent {
         myVote: 0
     };
 
+    zippyList:any[];
+
     constructor (zippyService: ZippyService) {
         this.zippyList = zippyService.getZippies();
     }
