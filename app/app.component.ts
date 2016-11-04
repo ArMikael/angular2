@@ -31,7 +31,10 @@ import {ZippyComponent} from './components/zippy.component';
                         enim maxime perspiciatis quia quisquam quo similique vel.</p>
                    </article>
                    
-                   <zippy></zippy>
+                   <zippy *ngFor="#zip of zippyList">
+                        <h2 class="zippy-header">{{ zip.title }}</h2>
+                        <p class="zippy-body">{{ zip.message }}</p>
+                   </zippy>
                    
                    <contact-form></contact-form>
                    
@@ -45,6 +48,21 @@ export class AppComponent {
         totalVotes: 10,
         myVote: 0
     };
+
+    zippyList = [
+        {
+            title: 'AngularJS News',
+            message: 'we have a new great album for you. Listen to it and take fun'
+        },
+        {
+            title: 'New Album - Tesera Nova',
+            message: '@Red_Hot_Chili_Peppers tadadada'
+        },
+        {
+            title: 'React News',
+            message: 'Angular 2 is released! Give me two!'
+        }
+    ];
 
     onClick($event) {
         // $event.stopPropagation(); - Will disable to the event to go up by the parrent elements

@@ -10,10 +10,15 @@ import {Component} from 'angular2/core';
             -ms-user-select: none;
             user-select: none;
         }
+        
+        .zippy-header {
+            display: inline-block;
+        }
     `],
     template: `
-        <div class="panel panel-default">
+        <div class="panel panel-default zippy">
             <div class="panel-heading" (click)="onClick()">
+                <ng-content select=".zippy-header"></ng-content>
                 <i class="glyphicon" [ngClass]="{
                     'glyphicon-chevron-up' : statusOpened,
                     'glyphicon-chevron-down' : !statusOpened
@@ -22,8 +27,7 @@ import {Component} from 'angular2/core';
             </div>
             
             <div class="panel-body" *ngIf="statusOpened">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, quas.
-                <!--<ng-content select=".zippy-body"></ng-content>-->
+                <ng-content select=".zippy-body"></ng-content>
             </div>
         </div>
     `

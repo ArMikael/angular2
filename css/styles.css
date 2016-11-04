@@ -18,3 +18,16 @@
 .ng-touched.ng-invalid {
     border: 1px solid red;
 }
+
+.zippy-header {
+    display: inline-block;
+}
+
+/*.zippy .glyphicon {*/
+    /*float: right;*/
+/*}*/
+
+/*.zippy .glyphicon:after {*/
+    /*display: block;*/
+    /*clear: both;*/
+/*}*/
