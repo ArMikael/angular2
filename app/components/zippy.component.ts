@@ -17,16 +17,17 @@ import {Component} from 'angular2/core';
     `],
     template: `
         <div class="panel panel-default zippy">
-            <div class="panel-heading" (click)="onClick()">
+            <div class="panel-heading" (click)="toggle()">
                 <ng-content select=".zippy-header"></ng-content>
-                <i class="glyphicon" [ngClass]="{
-                    'glyphicon-chevron-up' : statusOpened,
-                    'glyphicon-chevron-down' : !statusOpened
+                <i class="glyphicon pull-right" 
+                    [ngClass]="{
+                        'glyphicon-chevron-up' : statusOpened,
+                        'glyphicon-chevron-down' : !statusOpened
                     }">         
                 </i>
             </div>
             
-            <div class="panel-body" *ngIf="statusOpened">
+            <div *ngIf="statusOpened" class="panel-body">
                 <ng-content select=".zippy-body"></ng-content>
             </div>
         </div>
@@ -35,7 +36,7 @@ import {Component} from 'angular2/core';
 export class ZippyComponent {
     statusOpened = false;
 
-    onClick() {
+    toggle() {
         this.statusOpened = !this.statusOpened;
     }
 }

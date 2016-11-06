@@ -33,7 +33,7 @@ import {ZippyService} from './components/zippy.service';
                    </article>
                    
                    <zippy *ngFor="#zip of zippyList">
-                        <h2 class="zippy-header">{{ zip.title }}</h2>
+                        <h4 class="zippy-header">{{ zip.title }}</h4>
                         <p class="zippy-body">{{ zip.message }}</p>
                    </zippy>
                    

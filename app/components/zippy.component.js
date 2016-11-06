@@ -22,14 +22,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 function ZippyComponent() {
                     this.statusOpened = false;
                 }
-                ZippyComponent.prototype.onClick = function () {
+                ZippyComponent.prototype.toggle = function () {
                     this.statusOpened = !this.statusOpened;
                 };
                 ZippyComponent = __decorate([
                     core_1.Component({
                         selector: 'zippy',
                         styles: ["\n        .panel-heading {\n            cursor: pointer;\n            -webkit-user-select: none;\n            -moz-user-select: none;\n            -ms-user-select: none;\n            user-select: none;\n        }\n        \n        .zippy-header {\n            display: inline-block;\n        }\n    "],
-                        template: "\n        <div class=\"panel panel-default zippy\">\n            <div class=\"panel-heading\" (click)=\"onClick()\">\n                <ng-content select=\".zippy-header\"></ng-content>\n                <i class=\"glyphicon\" [ngClass]=\"{\n                    'glyphicon-chevron-up' : statusOpened,\n                    'glyphicon-chevron-down' : !statusOpened\n                    }\">         \n                </i>\n            </div>\n            \n            <div class=\"panel-body\" *ngIf=\"statusOpened\">\n                <ng-content select=\".zippy-body\"></ng-content>\n            </div>\n        </div>\n    "
+                        template: "\n        <div class=\"panel panel-default zippy\">\n            <div class=\"panel-heading\" (click)=\"toggle()\">\n                <ng-content select=\".zippy-header\"></ng-content>\n                <i class=\"glyphicon pull-right\" \n                    [ngClass]=\"{\n                        'glyphicon-chevron-up' : statusOpened,\n                        'glyphicon-chevron-down' : !statusOpened\n                    }\">         \n                </i>\n            </div>\n            \n            <div *ngIf=\"statusOpened\" class=\"panel-body\">\n                <ng-content select=\".zippy-body\"></ng-content>\n            </div>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ZippyComponent);
