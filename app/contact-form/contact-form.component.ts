@@ -9,4 +9,8 @@ export class ContactFormComponent {
     inputChange(input) {
         console.log(input);
     };
+
+    onSubmit(form) {
+        console.log(form);
+    };
 }

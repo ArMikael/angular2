@@ -25,6 +25,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     console.log(input);
                 };
                 ;
+                ContactFormComponent.prototype.onSubmit = function (form) {
+                    console.log(form);
+                };
+                ;
                 ContactFormComponent = __decorate([
                     core_1.Component({
                         selector: 'contact-form',

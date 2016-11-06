@@ -1,4 +1,4 @@
-<form class="contact-form">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.form)" class="contact-form">
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input ngControl="firstName" #firstName="ngForm"
@@ -25,5 +25,5 @@
             Comment is required.
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
 </form>
