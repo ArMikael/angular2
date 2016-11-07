@@ -11,6 +11,7 @@ export class ContactFormComponent {
     };
 
     onSubmit(form) {
+        console.log('User: ' + form.controls.firstName.value, ", Comment: " + form.controls.comment.value);
         console.log(form);
     };
 }

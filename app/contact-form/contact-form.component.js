@@ -26,6 +26,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 };
                 ;
                 ContactFormComponent.prototype.onSubmit = function (form) {
+                    console.log('User: ' + form.controls.firstName.value, ", Comment: " + form.controls.comment.value);
                     console.log(form);
                 };
                 ;
