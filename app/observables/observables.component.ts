@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
     selector: 'observables',
     template: `
-        <input type="text" placeholder="search" id="search">
+        <input type="text" placeholder="search" id="search" />
     `
 })
 export class ObservablesComponent {

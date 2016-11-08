@@ -61,7 +61,7 @@ export class AppComponent {
     }
 
     onClick($event) {
-        // $event.stopPropagation(); - Will disable to the event to go up by the parrent elements
+        // $event.stopPropagation(); - Will disable to the event to go up by the parent elements
         console.log('Submit Clicked', $event)
     };
 

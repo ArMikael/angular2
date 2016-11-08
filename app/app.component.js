@@ -51,7 +51,7 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                     this.zippyList = zippyService.getZippies();
                 }
                 AppComponent.prototype.onClick = function ($event) {
-                    // $event.stopPropagation(); - Will disable to the event to go up by the parrent elements
+                    // $event.stopPropagation(); - Will disable to the event to go up by the parent elements
                     console.log('Submit Clicked', $event);
                 };
                 ;
