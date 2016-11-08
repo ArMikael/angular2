@@ -6,6 +6,7 @@ import {TweetComponent} from './tweets/tweet.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
 import {ZippyComponent} from './components/zippy.component';
 import {ZippyService} from './components/zippy.service';
+import {ObservablesComponent} from './observables/observables.component';
 
 @Component({
     selector: 'my-app',
@@ -39,10 +40,12 @@ import {ZippyService} from './components/zippy.service';
                    
                    <contact-form></contact-form>
                    
+                   <observables></observables>
+                   
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
     directives: [CoursesComponent, AuthorsComponent, VoteComponent,
-                TweetComponent, ContactFormComponent, ZippyComponent],
+                TweetComponent, ContactFormComponent, ZippyComponent, ObservablesComponent],
     providers: [ZippyService]
 })
 export class AppComponent {
