@@ -7,6 +7,8 @@ import {ContactFormComponent} from './contact-form/contact-form.component';
 import {ZippyComponent} from './components/zippy.component';
 import {ZippyService} from './components/zippy.service';
 import {ObservablesComponent} from './observables/observables.component';
+import {PostService} from "./services/post.service";
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
     selector: 'my-app',
@@ -33,10 +35,10 @@ import {ObservablesComponent} from './observables/observables.component';
                         enim maxime perspiciatis quia quisquam quo similique vel.</p>
                    </article>
                    
-                   <zippy *ngFor="#zip of zippyList">
-                        <h4 class="zippy-header">{{ zip.title }}</h4>
-                        <p class="zippy-body">{{ zip.message }}</p>
-                   </zippy>
+                   <!--<zippy *ngFor="#zip of zippyList">-->
+                        <!--<h4 class="zippy-header">{{ zip.title }}</h4>-->
+                        <!--<p class="zippy-body">{{ zip.message }}</p>-->
+                   <!--</zippy>-->
                    
                    <contact-form></contact-form>
                    
@@ -46,7 +48,7 @@ import {ObservablesComponent} from './observables/observables.component';
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
     directives: [CoursesComponent, AuthorsComponent, VoteComponent,
                 TweetComponent, ContactFormComponent, ZippyComponent, ObservablesComponent],
-    providers: [ZippyService]
+    providers: [ZippyService, PostService, HTTP_PROVIDERS]
 })
 export class AppComponent {
     post = {
@@ -54,10 +56,15 @@ export class AppComponent {
         myVote: 0
     };
 
-    zippyList: Object[];
+    // zippyList: Object[];
 
-    constructor (zippyService: ZippyService) {
-        this.zippyList = zippyService.getZippies();
+    // constructor (zippyService: ZippyService) {
+    //     this.zippyList = zippyService.getZippies();
+    // }
+
+    constructor (private _postService: PostService) {
+        this._postService.getPosts()
+            .subscribe(posts => console.log(posts));
     }
 
     onClick($event) {

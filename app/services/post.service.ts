@@ -10,7 +10,7 @@ export class PostService {
 
     }
 
-    getPost(){
+    getPosts(){
         return this._http.get(this._url)
             .map(response => response.json());
     }

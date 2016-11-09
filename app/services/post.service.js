@@ -27,7 +27,7 @@ System.register(['angular2/http', 'rxjs/add/operator/map', 'angular2/core'], fun
                     this._http = _http;
                     this._url = 'https://jsonplaceholder.typicode.com/posts';
                 }
-                PostService.prototype.getPost = function () {
+                PostService.prototype.getPosts = function () {
                     return this._http.get(this._url)
                         .map(function (response) { return response.json(); });
                 };
