@@ -4,13 +4,13 @@ import {Observable} from 'rxjs/Rx';
 @Component({
     selector: 'observables',
     template: `
-        <input type="text" placeholder="search" id="search" />
+        <input #search type="text" placeholder="Search" id="search" />
     `
 })
 export class ObservablesComponent {
     constructor() {
-        var keyups = Observable.fromEvent($('#search'), 'keyup');
-
-        keyups.subscribe(data => console.log(data));
+        // Observable.fromEvent($("#search"), "change")
+        //     .subscribe(data => console.log(data));
+        console.log(new Observable());
     }
 }

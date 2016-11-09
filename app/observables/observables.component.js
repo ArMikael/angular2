@@ -23,13 +23,14 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
         execute: function() {
             ObservablesComponent = (function () {
                 function ObservablesComponent() {
-                    var keyups = Rx_1.Observable.fromEvent($('#search'), 'keyup');
-                    keyups.subscribe(function (data) { return console.log(data); });
+                    // Observable.fromEvent($("#search"), "change")
+                    //     .subscribe(data => console.log(data));
+                    console.log(new Rx_1.Observable());
                 }
                 ObservablesComponent = __decorate([
                     core_1.Component({
                         selector: 'observables',
-                        template: "\n        <input type=\"text\" placeholder=\"search\" id=\"search\" />\n    "
+                        template: "\n        <input #search type=\"text\" placeholder=\"Search\" id=\"search\" />\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ObservablesComponent);
