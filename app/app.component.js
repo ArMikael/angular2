@@ -49,11 +49,7 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
             }],
         execute: function() {
             AppComponent = (function () {
-                // zippyList: Object[];
-                // constructor (zippyService: ZippyService) {
-                //     this.zippyList = zippyService.getZippies();
-                // }
-                function AppComponent(_postService) {
+                function AppComponent(_postService, zippyService) {
                     this._postService = _postService;
                     this.post = {
                         totalVotes: 10,
@@ -61,6 +57,7 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                     };
                     this._postService.getPosts()
                         .subscribe(function (posts) { return console.log(posts); });
+                    this.zippyList = zippyService.getZippies();
                 }
                 AppComponent.prototype.onClick = function ($event) {
                     // $event.stopPropagation(); - Will disable to the event to go up by the parent elements
@@ -74,12 +71,12 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<main class=\"main\">\n                   <h1>Angular 2 App</h1>\n                   <courses></courses> \n                   <authors></authors>\n                   <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n    \n                   <div>\n                       <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                       <input type=\"text\" [(ngModel)]='courseTitle' />\n                       <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n                   </div>\n                   \n                   <article>\n                        <voter \n                            [totalVotes]=\"post.totalVotes\"\n                            [myVote]=\"post.myVote\"\n                            (vote)=\"onVote($event)\"\n                        >\n                        </voter>\n                        <p class=\"article-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus\n                        enim maxime perspiciatis quia quisquam quo similique vel.</p>\n                   </article>\n                   \n                   <!--<zippy *ngFor=\"#zip of zippyList\">-->\n                        <!--<h4 class=\"zippy-header\">{{ zip.title }}</h4>-->\n                        <!--<p class=\"zippy-body\">{{ zip.message }}</p>-->\n                   <!--</zippy>-->\n                   \n                   <contact-form></contact-form>\n                   \n                   <observables></observables>\n                   \n              </main> \n              ",
+                        template: "<main class=\"main\">\n                   <h1>Angular 2 App</h1>\n                   <courses></courses> \n                   <authors></authors>\n                   <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n    \n                   <div>\n                       <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                       <input type=\"text\" [(ngModel)]='courseTitle' />\n                       <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n                   </div>\n                   \n                   <article>\n                        <voter \n                            [totalVotes]=\"post.totalVotes\"\n                            [myVote]=\"post.myVote\"\n                            (vote)=\"onVote($event)\"\n                        >\n                        </voter>\n                        <p class=\"article-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus\n                        enim maxime perspiciatis quia quisquam quo similique vel.</p>\n                   </article>\n                   \n                   <zippy *ngFor=\"#zip of zippyList\">\n                        <h4 class=\"zippy-header\">{{ zip.title }}</h4>\n                        <p class=\"zippy-body\">{{ zip.message }}</p>\n                   </zippy>\n                   \n                   <contact-form></contact-form>\n                   \n                   <observables></observables>\n                   \n              </main> \n              ",
                         directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, voter_component_1.VoteComponent,
                             tweet_component_1.TweetComponent, contact_form_component_1.ContactFormComponent, zippy_component_1.ZippyComponent, observables_component_1.ObservablesComponent],
                         providers: [zippy_service_1.ZippyService, post_service_1.PostService, http_1.HTTP_PROVIDERS]
                     }), 
-                    __metadata('design:paramtypes', [post_service_1.PostService])
+                    __metadata('design:paramtypes', [post_service_1.PostService, zippy_service_1.ZippyService])
                 ], AppComponent);
                 return AppComponent;
             }());

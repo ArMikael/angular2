@@ -35,10 +35,10 @@ import {HTTP_PROVIDERS} from 'angular2/http';
                         enim maxime perspiciatis quia quisquam quo similique vel.</p>
                    </article>
                    
-                   <!--<zippy *ngFor="#zip of zippyList">-->
-                        <!--<h4 class="zippy-header">{{ zip.title }}</h4>-->
-                        <!--<p class="zippy-body">{{ zip.message }}</p>-->
-                   <!--</zippy>-->
+                   <zippy *ngFor="#zip of zippyList">
+                        <h4 class="zippy-header">{{ zip.title }}</h4>
+                        <p class="zippy-body">{{ zip.message }}</p>
+                   </zippy>
                    
                    <contact-form></contact-form>
                    
@@ -56,15 +56,13 @@ export class AppComponent {
         myVote: 0
     };
 
-    // zippyList: Object[];
+    zippyList: Object[];
 
-    // constructor (zippyService: ZippyService) {
-    //     this.zippyList = zippyService.getZippies();
-    // }
-
-    constructor (private _postService: PostService) {
+    constructor (private _postService: PostService, zippyService: ZippyService) {
         this._postService.getPosts()
             .subscribe(posts => console.log(posts));
+
+        this.zippyList = zippyService.getZippies();
     }
 
     onClick($event) {
