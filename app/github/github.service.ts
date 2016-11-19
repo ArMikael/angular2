@@ -5,10 +5,18 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class GitHubService {
-    private _userUrl = 'https://api.github.com/users/octocat';
-    private _followersUrl = 'https://api.github.com/users/octocat/followers';
 
-    constructor() {
+    constructor(private _http: Http) {
 
+    }
+
+    getUser(userName) {
+        return this._http.get('https://api.github.com/users/' + userName)
+            .map(user => console.log(user));
+    }
+
+    getFollowers(userName) {
+        return this._http.get('https://api.github.com/users/' + userName + '/followers')
+            .map(followers => console.log(followers));
     }
 }

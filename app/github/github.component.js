@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./github.service"], function(exports_1, context_1) {
+System.register(["angular2/core", "./github.service", "angular2/http"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "./github.service"], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, github_service_1;
+    var core_1, github_service_1, http_1;
     var GitHubComponent;
     return {
         setters:[
@@ -19,18 +19,22 @@ System.register(["angular2/core", "./github.service"], function(exports_1, conte
             },
             function (github_service_1_1) {
                 github_service_1 = github_service_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             GitHubComponent = (function () {
-                function GitHubComponent() {
+                function GitHubComponent(githubService) {
+                    this.user = githubService.getUser('ArMikael');
                 }
                 GitHubComponent = __decorate([
                     core_1.Component({
                         selector: 'github',
-                        template: "",
-                        providers: [github_service_1.GitHubService]
+                        template: "\n        <h2>[user]</h2>\n    ",
+                        providers: [github_service_1.GitHubService, http_1.HTTP_PROVIDERS]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [github_service_1.GitHubService])
                 ], GitHubComponent);
                 return GitHubComponent;
             }());

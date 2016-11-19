@@ -1,4 +1,4 @@
-System.register(["angular2/core", 'rxjs/add/observable/forkJoin', 'rxjs/add/operator/map'], function(exports_1, context_1) {
+System.register(["angular2/core", 'angular2/http', 'rxjs/add/observable/forkJoin', 'rxjs/add/operator/map'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,24 +10,34 @@ System.register(["angular2/core", 'rxjs/add/observable/forkJoin', 'rxjs/add/oper
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, http_1;
     var GitHubService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (_1) {},
             function (_2) {}],
         execute: function() {
             GitHubService = (function () {
-                function GitHubService() {
-                    this._userUrl = 'https://api.github.com/users/octocat';
-                    this._followersUrl = 'https://api.github.com/users/octocat/followers';
+                function GitHubService(_http) {
+                    this._http = _http;
                 }
+                GitHubService.prototype.getUser = function (userName) {
+                    return this._http.get('https://api.github.com/users/' + userName)
+                        .map(function (user) { return console.log(user); });
+                };
+                GitHubService.prototype.getFollowers = function (userName) {
+                    return this._http.get('https://api.github.com/users/' + userName + '/followers')
+                        .map(function (followers) { return console.log(followers); });
+                };
                 GitHubService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], GitHubService);
                 return GitHubService;
             }());
