@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses/courses.component', './authors/authors.component', './components/voter.component', './tweets/tweet.component', './contact-form/contact-form.component', './components/zippy.component', './components/zippy.service', './observables/observables.component', "./services/post.service", 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', './courses/courses.component', './authors/authors.component', './components/voter.component', './tweets/tweet.component', './contact-form/contact-form.component', './components/zippy.component', './components/zippy.service', './observables/observables.component', "./posts/post.service", 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -55,9 +55,8 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                         totalVotes: 10,
                         myVote: 0
                     };
-                    this._postService.getPosts()
-                        .subscribe(function (posts) { return console.log(posts); });
                     this.zippyList = zippyService.getZippies();
+                    this._postService.createPost({ userId: 4, id: 44, title: 'Angular 2.1 Update', body: 'blabla' });
                 }
                 AppComponent.prototype.onClick = function ($event) {
                     // $event.stopPropagation(); - Will disable to the event to go up by the parent elements
@@ -68,6 +67,10 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                     console.log($event);
                 };
                 ;
+                AppComponent.prototype.ngOnInit = function () {
+                    this._postService.getPosts()
+                        .subscribe(function (posts) { return console.log(posts[0].title); });
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',

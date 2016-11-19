@@ -7,8 +7,9 @@ import {ContactFormComponent} from './contact-form/contact-form.component';
 import {ZippyComponent} from './components/zippy.component';
 import {ZippyService} from './components/zippy.service';
 import {ObservablesComponent} from './observables/observables.component';
-import {PostService} from "./services/post.service";
+import {PostService} from "./posts/post.service";
 import {HTTP_PROVIDERS} from 'angular2/http';
+import {OnInit} from 'angular2/core';
 
 @Component({
     selector: 'my-app',
@@ -50,7 +51,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
                 TweetComponent, ContactFormComponent, ZippyComponent, ObservablesComponent],
     providers: [ZippyService, PostService, HTTP_PROVIDERS]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     post = {
         totalVotes: 10,
         myVote: 0
@@ -59,10 +60,9 @@ export class AppComponent {
     zippyList: Object[];
 
     constructor (private _postService: PostService, zippyService: ZippyService) {
-        this._postService.getPosts()
-            .subscribe(posts => console.log(posts));
-
         this.zippyList = zippyService.getZippies();
+
+        this._postService.createPost({userId: 4, id: 44, title: 'Angular 2.1 Update', body: 'blabla'});
     }
 
     onClick($event) {
@@ -73,5 +73,11 @@ export class AppComponent {
     onVote($event) {
         console.log($event);
     };
+
+    ngOnInit() {
+        this._postService.getPosts()
+            .subscribe(posts => console.log(posts[0].title));
+
+    }
 
 }  
