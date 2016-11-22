@@ -26,13 +26,14 @@ System.register(["angular2/core", 'angular2/http', 'rxjs/add/observable/forkJoin
             GitHubService = (function () {
                 function GitHubService(_http) {
                     this._http = _http;
+                    this._baseUrl = 'https://api.github.com/users/';
                 }
                 GitHubService.prototype.getUser = function (userName) {
-                    return this._http.get('https://api.github.com/users/' + userName)
+                    return this._http.get(this._baseUrl + userName)
                         .map(function (user) { return console.log(user); });
                 };
                 GitHubService.prototype.getFollowers = function (userName) {
-                    return this._http.get('https://api.github.com/users/' + userName + '/followers')
+                    return this._http.get(this._baseUrl + userName + '/followers')
                         .map(function (followers) { return console.log(followers); });
                 };
                 GitHubService = __decorate([
