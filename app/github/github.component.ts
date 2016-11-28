@@ -51,10 +51,9 @@ export class GitHubComponent implements OnInit {
                 res => {
                     this.user = res[0];
                     this.followers = res[1];
-                }
-            ),
-            null,
-            () => { this.isLoading = true }
+                },
+                null,
+                () => { this.isLoading = false; })
     }
 
 }

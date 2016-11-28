@@ -41,9 +41,7 @@ System.register(["angular2/core", "./github.service", "angular2/http", 'rxjs/Obs
                         .subscribe(function (res) {
                         _this.user = res[0];
                         _this.followers = res[1];
-                    }),
-                        null,
-                        function () { _this.isLoading = true; };
+                    }, null, function () { _this.isLoading = false; });
                 };
                 GitHubComponent = __decorate([
                     core_1.Component({
