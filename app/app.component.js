@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses/courses.component', './authors/authors.component', './components/voter.component', './tweets/tweet.component', './contact-form/contact-form.component', './components/zippy.component', './components/zippy.service', './observables/observables.component', "./posts/post.service", './github/github.component', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'angular2/router', './authors/authors.component', './contact-form/contact-form.component', './courses/courses.component', './github/github.component', './observables/observables.component', "./posts/post.service", './tweets/tweet.component', './components/voter.component', './components/zippy.component', './components/zippy.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,33 +10,30 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, authors_component_1, voter_component_1, tweet_component_1, contact_form_component_1, zippy_component_1, zippy_service_1, observables_component_1, post_service_1, github_component_1, http_1;
+    var core_1, http_1, router_1, authors_component_1, contact_form_component_1, courses_component_1, github_component_1, observables_component_1, post_service_1, tweet_component_1, voter_component_1, zippy_component_1, zippy_service_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (courses_component_1_1) {
-                courses_component_1 = courses_component_1_1;
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (authors_component_1_1) {
                 authors_component_1 = authors_component_1_1;
             },
-            function (voter_component_1_1) {
-                voter_component_1 = voter_component_1_1;
-            },
-            function (tweet_component_1_1) {
-                tweet_component_1 = tweet_component_1_1;
-            },
             function (contact_form_component_1_1) {
                 contact_form_component_1 = contact_form_component_1_1;
             },
-            function (zippy_component_1_1) {
-                zippy_component_1 = zippy_component_1_1;
+            function (courses_component_1_1) {
+                courses_component_1 = courses_component_1_1;
             },
-            function (zippy_service_1_1) {
-                zippy_service_1 = zippy_service_1_1;
+            function (github_component_1_1) {
+                github_component_1 = github_component_1_1;
             },
             function (observables_component_1_1) {
                 observables_component_1 = observables_component_1_1;
@@ -44,11 +41,17 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
             function (post_service_1_1) {
                 post_service_1 = post_service_1_1;
             },
-            function (github_component_1_1) {
-                github_component_1 = github_component_1_1;
+            function (tweet_component_1_1) {
+                tweet_component_1 = tweet_component_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
+            function (voter_component_1_1) {
+                voter_component_1 = voter_component_1_1;
+            },
+            function (zippy_component_1_1) {
+                zippy_component_1 = zippy_component_1_1;
+            },
+            function (zippy_service_1_1) {
+                zippy_service_1 = zippy_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -75,11 +78,17 @@ System.register(['angular2/core', './courses/courses.component', './authors/auth
                         .subscribe(function (posts) { return console.log(posts[0].title); });
                 };
                 AppComponent = __decorate([
+                    router_1.RouteConfig([
+                        { path: '/authors', name: 'Authors', component: authors_component_1.AuthorsComponent },
+                        { path: '/courses', name: 'Courses', component: courses_component_1.CoursesComponent },
+                        { path: '/github', name: 'GitHub', component: github_component_1.GitHubComponent },
+                        { path: '/*other', name: 'Other', redirectTo: ['Authors'] }
+                    ]),
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<main class=\"main\">\n                   <h1>Angular 2 App</h1>\n                   <courses></courses> \n                   <authors></authors>\n                   <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n    \n                   <div>\n                       <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                       <input type=\"text\" [(ngModel)]='courseTitle' />\n                       <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n                   </div>\n                   \n                   <article>\n                        <voter \n                            [totalVotes]=\"post.totalVotes\"\n                            [myVote]=\"post.myVote\"\n                            (vote)=\"onVote($event)\"\n                        >\n                        </voter>\n                        <p class=\"article-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus\n                        enim maxime perspiciatis quia quisquam quo similique vel.</p>\n                   </article>\n                   \n                   <zippy *ngFor=\"#zip of zippyList\">\n                        <h4 class=\"zippy-header\">{{ zip.title }}</h4>\n                        <p class=\"zippy-body\">{{ zip.message }}</p>\n                   </zippy>\n                   \n                   <contact-form></contact-form>\n                   \n                   <observables></observables>\n                   \n                   <github-profile></github-profile>\n                   \n              </main> \n              ",
-                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, voter_component_1.VoteComponent,
-                            tweet_component_1.TweetComponent, contact_form_component_1.ContactFormComponent, zippy_component_1.ZippyComponent, observables_component_1.ObservablesComponent, github_component_1.GitHubComponent],
+                        template: "<main class=\"main\">\n                   <h1>Angular 2 App</h1>\n   \n                   <button class=\"btn-success\" (click)=\"onClick($event)\" >Submit</button>\n    \n                   <div>\n                       <h3 [style.color]=\"courseTitle ? 'gold' : 'gray'\">Course Wanted: {{ courseTitle }}</h3>\n                       <input type=\"text\" [(ngModel)]='courseTitle' />\n                       <input type=\"button\" class=\"btn-danger\" value=\"Clear\" (click)=\"courseTitle=''\" />\n                   </div>\n                   \n                   <article>\n                        <voter \n                            [totalVotes]=\"post.totalVotes\"\n                            [myVote]=\"post.myVote\"\n                            (vote)=\"onVote($event)\"\n                        >\n                        </voter>\n                        <p class=\"article-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur assumenda doloribus\n                        enim maxime perspiciatis quia quisquam quo similique vel.</p>\n                   </article>\n                   \n                   <zippy *ngFor=\"#zip of zippyList\">\n                        <h4 class=\"zippy-header\">{{ zip.title }}</h4>\n                        <p class=\"zippy-body\">{{ zip.message }}</p>\n                   </zippy>\n                   \n                   <contact-form></contact-form>\n                   \n                   <observables></observables>\n                   \n                   <router-outlet></router-outlet>\n              </main> \n              ",
+                        directives: [router_1.RouterOutlet, authors_component_1.AuthorsComponent, contact_form_component_1.ContactFormComponent, courses_component_1.CoursesComponent, github_component_1.GitHubComponent,
+                            observables_component_1.ObservablesComponent, tweet_component_1.TweetComponent, voter_component_1.VoteComponent, zippy_component_1.ZippyComponent],
                         providers: [zippy_service_1.ZippyService, post_service_1.PostService, http_1.HTTP_PROVIDERS]
                     }), 
                     __metadata('design:paramtypes', [post_service_1.PostService, zippy_service_1.ZippyService])

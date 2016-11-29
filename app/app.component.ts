@@ -1,23 +1,31 @@
-import {Component} from 'angular2/core';
-import {CoursesComponent} from './courses/courses.component';
+import {Component, OnInit} from 'angular2/core';
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {RouteConfig, RouterOutlet} from 'angular2/router';
+
 import {AuthorsComponent} from './authors/authors.component';
-import {VoteComponent} from './components/voter.component';
-import {TweetComponent} from './tweets/tweet.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
-import {ZippyComponent} from './components/zippy.component';
-import {ZippyService} from './components/zippy.service';
+import {CoursesComponent} from './courses/courses.component';
+import {GitHubComponent} from './github/github.component';
 import {ObservablesComponent} from './observables/observables.component';
 import {PostService} from "./posts/post.service";
-import {GitHubComponent} from './github/github.component';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {OnInit} from 'angular2/core';
+import {TweetComponent} from './tweets/tweet.component';
+import {VoteComponent} from './components/voter.component';
+import {ZippyComponent} from './components/zippy.component';
+import {ZippyService} from './components/zippy.service';
+
+
+@RouteConfig([
+    {path: '/authors', name: 'Authors', component: AuthorsComponent},
+    {path: '/courses', name: 'Courses', component: CoursesComponent},
+    {path: '/github', name: 'GitHub', component: GitHubComponent},
+    {path: '/*other', name: 'Other', redirectTo: ['Authors']}
+])
 
 @Component({
     selector: 'my-app',
     template: `<main class="main">
                    <h1>Angular 2 App</h1>
-                   <courses></courses> 
-                   <authors></authors>
+   
                    <button class="btn-success" (click)="onClick($event)" >Submit</button>
     
                    <div>
@@ -46,12 +54,11 @@ import {OnInit} from 'angular2/core';
                    
                    <observables></observables>
                    
-                   <github-profile></github-profile>
-                   
+                   <router-outlet></router-outlet>
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
-    directives: [CoursesComponent, AuthorsComponent, VoteComponent,
-                TweetComponent, ContactFormComponent, ZippyComponent, ObservablesComponent, GitHubComponent],
+    directives: [RouterOutlet, AuthorsComponent, ContactFormComponent, CoursesComponent, GitHubComponent,
+                ObservablesComponent, TweetComponent, VoteComponent, ZippyComponent],
     providers: [ZippyService, PostService, HTTP_PROVIDERS]
 })
 export class AppComponent implements OnInit {
