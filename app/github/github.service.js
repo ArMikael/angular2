@@ -1,4 +1,4 @@
-System.register(["angular2/core", 'angular2/http', 'rxjs/add/observable/forkJoin', 'rxjs/add/operator/map'], function(exports_1, context_1) {
+System.register(["angular2/core", 'angular2/http', 'rxjs/add/operator/map'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -20,8 +20,7 @@ System.register(["angular2/core", 'angular2/http', 'rxjs/add/observable/forkJoin
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (_1) {},
-            function (_2) {}],
+            function (_1) {}],
         execute: function() {
             GitHubService = (function () {
                 function GitHubService(_http) {
@@ -30,11 +29,11 @@ System.register(["angular2/core", 'angular2/http', 'rxjs/add/observable/forkJoin
                 }
                 GitHubService.prototype.getUser = function (userName) {
                     return this._http.get(this._baseUrl + userName)
-                        .map(function (user) { return console.log(user); });
+                        .map(function (res) { return res.json(); });
                 };
                 GitHubService.prototype.getFollowers = function (userName) {
                     return this._http.get(this._baseUrl + userName + '/followers')
-                        .map(function (followers) { return console.log(followers); });
+                        .map(function (res) { return res.json(); });
                 };
                 GitHubService = __decorate([
                     core_1.Injectable(), 

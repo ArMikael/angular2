@@ -8,6 +8,7 @@ import {ZippyComponent} from './components/zippy.component';
 import {ZippyService} from './components/zippy.service';
 import {ObservablesComponent} from './observables/observables.component';
 import {PostService} from "./posts/post.service";
+import {GitHubComponent} from './github/github.component';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {OnInit} from 'angular2/core';
 
@@ -45,10 +46,12 @@ import {OnInit} from 'angular2/core';
                    
                    <observables></observables>
                    
+                   <github-profile></github-profile>
+                   
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
     directives: [CoursesComponent, AuthorsComponent, VoteComponent,
-                TweetComponent, ContactFormComponent, ZippyComponent, ObservablesComponent],
+                TweetComponent, ContactFormComponent, ZippyComponent, ObservablesComponent, GitHubComponent],
     providers: [ZippyService, PostService, HTTP_PROVIDERS]
 })
 export class AppComponent implements OnInit {
