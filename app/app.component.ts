@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {RouteConfig, RouterOutlet} from 'angular2/router';
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 
 import {AuthorsComponent} from './authors/authors.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
@@ -15,7 +15,7 @@ import {ZippyService} from './components/zippy.service';
 
 
 @RouteConfig([
-    {path: '/authors', name: 'Authors', component: AuthorsComponent},
+    {path: '/authors', name: 'Authors', component: AuthorsComponent, useAsDefault: true},
     {path: '/courses', name: 'Courses', component: CoursesComponent},
     {path: '/github', name: 'GitHub', component: GitHubComponent},
     {path: '/*other', name: 'Other', redirectTo: ['Authors']}
@@ -23,8 +23,27 @@ import {ZippyService} from './components/zippy.service';
 
 @Component({
     selector: 'my-app',
-    template: `<main class="main">
+    template: `<ul class="nav nav-tabs">
+                    <li role="presentation" class="active">
+                        <a href="" [routerLink]="['Authors']">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="" [routerLink]="['Authors']">Authors</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="" [routerLink]="['Courses']">Courses</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="" [routerLink]="['GitHub']">GitHub</a>
+                    </li>
+                </ul>
+
+
+                <main class="main">
+
                    <h1>Angular 2 App</h1>
+               
+                   <router-outlet></router-outlet>
    
                    <button class="btn-success" (click)="onClick($event)" >Submit</button>
     
@@ -53,13 +72,12 @@ import {ZippyService} from './components/zippy.service';
                    <contact-form></contact-form>
                    
                    <observables></observables>
-                   
-                   <router-outlet></router-outlet>
+                  
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
-    directives: [RouterOutlet, AuthorsComponent, ContactFormComponent, CoursesComponent, GitHubComponent,
+    directives: [ROUTER_DIRECTIVES, AuthorsComponent, ContactFormComponent, CoursesComponent, GitHubComponent,
                 ObservablesComponent, TweetComponent, VoteComponent, ZippyComponent],
-    providers: [ZippyService, PostService, HTTP_PROVIDERS]
+    providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS, PostService, ZippyService]
 })
 export class AppComponent implements OnInit {
     post = {
