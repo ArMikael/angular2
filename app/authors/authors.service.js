@@ -10,11 +10,11 @@ System.register([], function(exports_1, context_1) {
                 }
                 AuthorsService.prototype.getAuthors = function () {
                     return [
-                        'Uwe Rosenberg',
-                        'Vlaada Chvatil',
-                        'Ignazi Tzevichek',
-                        'Mac Herds',
-                        'Stefan Feld'
+                        { name: 'Uwe Rosenberg', id: 101 },
+                        { name: 'Vlaada Chvatil', id: 102 },
+                        { name: 'Ignazi Tzevichek', id: 103 },
+                        { name: 'Mac Herds', id: 104 },
+                        { name: 'Stefan Feld', id: 105 }
                     ];
                 };
                 return AuthorsService;

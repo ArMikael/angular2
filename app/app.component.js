@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'angular2/router', './authors/authors.component', './contact-form/contact-form.component', './courses/courses.component', './github/github.component', './observables/observables.component', "./posts/post.service", './tweets/tweet.component', './components/voter.component', './components/zippy.component', './components/zippy.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'angular2/router', './authors/authors.component', './author/author.component', './contact-form/contact-form.component', './courses/courses.component', './github/github.component', './observables/observables.component', "./posts/post.service", './tweets/tweet.component', './components/voter.component', './components/zippy.component', './components/zippy.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './authors
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, authors_component_1, contact_form_component_1, courses_component_1, github_component_1, observables_component_1, post_service_1, tweet_component_1, voter_component_1, zippy_component_1, zippy_service_1;
+    var core_1, http_1, router_1, authors_component_1, author_component_1, contact_form_component_1, courses_component_1, github_component_1, observables_component_1, post_service_1, tweet_component_1, voter_component_1, zippy_component_1, zippy_service_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './authors
             },
             function (authors_component_1_1) {
                 authors_component_1 = authors_component_1_1;
+            },
+            function (author_component_1_1) {
+                author_component_1 = author_component_1_1;
             },
             function (contact_form_component_1_1) {
                 contact_form_component_1 = contact_form_component_1_1;
@@ -80,6 +83,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './authors
                 AppComponent = __decorate([
                     router_1.RouteConfig([
                         { path: '/authors', name: 'Authors', component: authors_component_1.AuthorsComponent, useAsDefault: true },
+                        { path: '/authors/:id', name: 'Author', component: author_component_1.AuthorComponent },
                         { path: '/courses', name: 'Courses', component: courses_component_1.CoursesComponent },
                         { path: '/github', name: 'GitHub', component: github_component_1.GitHubComponent },
                         { path: '/*other', name: 'Other', redirectTo: ['Authors'] }

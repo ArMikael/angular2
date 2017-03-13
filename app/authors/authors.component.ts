@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {AuthorsService} from './authors.service';
 import {FavoriteComponent} from '../components/favorite.component';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
     selector: 'authors',
@@ -12,15 +13,17 @@ import {FavoriteComponent} from '../components/favorite.component';
                         <favorite [isFavorited]="author.isFavorited"
                                    (change) = "onFavoriteChange($event)">                                   
                         </favorite>
-                        {{ author }}
+                        <a [routerLink]="['Author', {id: author.id}]" class="author-link">
+                            {{ author.name }}
+                        </a>
                     </li>
                </ul>
     `,
     providers: [AuthorsService],
-    directives: [FavoriteComponent]
+    directives: [ROUTER_DIRECTIVES, FavoriteComponent]
 })
 export class AuthorsComponent {
-    authors: string[];
+    authors: any[];
 
     constructor(authorsService:AuthorsService) {
         this.authors = authorsService.getAuthors();
@@ -29,11 +32,6 @@ export class AuthorsComponent {
     onFavoriteChange($event) {
         console.log('Favorite changed: ', $event);
     }
-
-    author = {
-        name: 'Vladlen Kaparov',
-        isFavorited: true
-    };
 
     isImportant = true;
 }

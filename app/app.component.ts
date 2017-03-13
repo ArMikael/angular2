@@ -3,6 +3,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 
 import {AuthorsComponent} from './authors/authors.component';
+import {AuthorComponent} from './author/author.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
 import {CoursesComponent} from './courses/courses.component';
 import {GitHubComponent} from './github/github.component';
@@ -16,6 +17,7 @@ import {ZippyService} from './components/zippy.service';
 
 @RouteConfig([
     {path: '/authors', name: 'Authors', component: AuthorsComponent, useAsDefault: true},
+    {path: '/authors/:id', name: 'Author', component: AuthorComponent},
     {path: '/courses', name: 'Courses', component: CoursesComponent},
     {path: '/github', name: 'GitHub', component: GitHubComponent},
     {path: '/*other', name: 'Other', redirectTo: ['Authors']}
