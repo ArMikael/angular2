@@ -1,12 +1,41 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit, OnDestroy} from 'angular2/core';
+import {RouteParams} from 'angular2/router';
+import {AuthorsService} from '../authors/authors.service';
 
 @Component({
     selector: 'author',
     template: `
-        <h2>Author: </h2>
-    `
+        <h1>Author</h1>
+        <div *ngIf="isLoading">
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
+        </div>
+        <div>
+            <div *ngFor="#post of posts">
+                <h3>{{post.title}}</h3>
+                <p>{{post.body}}</p>
+            </div>
+        </div>
+    `,
+    providers: [AuthorsService],
 })
 
-export class AuthorComponent {
+export class AuthorComponent implements OnInit {
+    isLoading = true;
+    posts: any[];
+    userId: number;
 
+    constructor(private _authorsService: AuthorsService, private routeParams: RouteParams) {
+
+    }
+
+    ngOnInit(){
+        // Get user id from url - route params
+        this.userId = parseInt(this.routeParams.params["id"]);
+
+        this._authorsService.getPost(this.userId)
+            .subscribe(posts => {
+                this.isLoading = false;
+                this.posts = posts;
+            });
+    }
 }
