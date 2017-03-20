@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {Component, OnInit} from '@angular/core';
-import {HttpModule} from '@angular/http';
+import { Component, OnInit } from '@angular/core';
 
+import { routing } from './app.routes';
 import {AuthorsComponent} from './authors/authors.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
 import {CoursesComponent} from './courses/courses.component';
@@ -68,9 +68,10 @@ import {ZippyService} from './components/zippy.service';
                   
               </main> 
               `, // Two-way data binding - [(banana in the box)] = (event-binding) + [property-binding]
-    providers: [HttpModule, PostService, ZippyService]
+    providers: [PostService, ZippyService]
 })
 @NgModule({
+    imports: [routing],
     declarations: [AuthorsComponent, ContactFormComponent, CoursesComponent, GitHubComponent,
                     ObservablesComponent, TweetComponent, VoteComponent, ZippyComponent],
 })
@@ -85,7 +86,7 @@ export class AppComponent implements OnInit {
     constructor (private _postService: PostService, zippyService: ZippyService) {
         this.zippyList = zippyService.getZippies();
 
-        this._postService.createPost({userId: 4, id: 44, title: 'Angular 2.1 Update', body: 'blabla'});
+        this._postService.createPost({userId: 4, id: 44, title: 'Angular 4 Final', body: 'blabla'});
     }
 
     onClick($event) {
